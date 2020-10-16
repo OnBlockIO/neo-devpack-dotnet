@@ -9,9 +9,19 @@ using System.Linq;
 
 namespace TestingEngine
 {
-    class Program
+    public class Program
     {
         static int Main(string[] args)
+        {
+            JObject result = Run(args);
+            if (!result.ContainsProperty("vm_state"))
+            {
+                return -1;
+            }
+            return 0;
+        }
+
+        public static JObject Run(string[] args)
         {
             JObject result;
             if (args.Length >= 2)
@@ -23,12 +33,7 @@ namespace TestingEngine
                 result = BuildJsonException("One or more arguments are missing");
             }
 
-            Console.WriteLine(result);
-            if (!result.ContainsProperty("vm_state"))
-            {
-                return -1;
-            }
-            return 0;
+            return result;
         }
 
         /// <summary>

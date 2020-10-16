@@ -30,6 +30,11 @@ namespace TestingEngine
 
         private Engine()
         {
+            Reset();
+        }
+
+        public void Reset()
+        {
             engine = SetupNativeContracts();
         }
 
